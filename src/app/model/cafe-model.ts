@@ -1,14 +1,16 @@
-export class Order {
-    constructor(
-        public orderDate: string,
-        public orderDetails: OrderDetails[],
-    ) { }
+// export class Order {
+     
+//     constructor(
+//      orderDate: string,
+//      orderDetails: OrderDetails[]
+//     ) { }
 
-}
+// }
 
 export class OrderDetails {
+   
     constructor(
-        public beverage: string,
-        public quantity: number
+       public beverage: any,
+       public quantity: any
     ) { }
-}
+ }

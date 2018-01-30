@@ -1,27 +1,33 @@
-<div *ngIf="!show">
-  <button mat-raised-button color="primary" (click)="onNewOrder()">New Order</button>
-  <br>
-</div>
-<div *ngIf="show">
-  <mat-form-field>
-    <mat-select placeholder="Beverage">
-      <mat-option *ngFor="let beverage of beverages" [value]="beverage.value">
-        {{ beverage.viewValue }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-select placeholder="Quantity">
-      <mat-option [value]=1>1</mat-option>
-      <mat-option [value]=2>2</mat-option>
-      <mat-option [value]=3>3</mat-option>
-      <mat-option [value]=4>4</mat-option>
-      <mat-option [value]=5>5</mat-option>
-    </mat-select>
-    </mat-form-field><button mat-raised-button color="primary" (click)="addOrderDetails()" class="greenbtn" id="btnAdd">&nbsp;Add</button>
-    <hr>
-    <ul><li *ngFor="let orderDetail of orderDetails">{{orderDetail.beverage}}&nbsp; X &nbsp; {{quentity}}</li></ul>
-  <br>
+<form>
+  <div *ngIf="!show">
+    <button mat-raised-button color="primary" (click)="onNewOrder()">New Order</button>
+    <br>
+  </div>
+  <div *ngIf="show">
+    <mat-form-field>
+      <mat-select placeholder="Select Beverage" [(ngModel)]="sBeverage" name="beverage">
+        <mat-option *ngFor="let beverage of beverages" [value]="beverage.value">
+          {{ beverage.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-  <button id="btnSubmitOrder" (click)="onSubmitOrder()" mat-raised-button color="accent">Submit Order </button>
-</div>
+    <mat-form-field>
+      <mat-select placeholder="Select Quantity" [(ngModel)]="sQty" name="quantity">
+        <mat-option *ngFor="let quantity of quantities" [value]="quantity.value">
+          {{ quantity.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addOrderDetails(sBeverage,sQty)" class="greenbtn" id="btnAdd">Add</button>
+    <ul>
+      <li *ngFor="let orderDetail of orderDetails">
+        {{orderDetail.beverage}}&nbsp; X &nbsp; {{orderDetail.quantity}}
+      </li>
+    </ul>
+    <br>
+    <button id="btnSubmitOrder" (click)="onSubmitOrder()" mat-raised-button color="accent">
+      Submit Order 
+    </button>
+  </div>
+</form>
