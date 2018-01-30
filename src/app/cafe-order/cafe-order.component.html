@@ -1,0 +1,25 @@
+<div *ngIf="!show">
+  <button mat-raised-button color="primary" (click)="onNewOrder()">New Order</button>
+  <br>
+</div>
+<div *ngIf="show">
+  <mat-form-field>
+    <mat-select placeholder="Beverage">
+      <mat-option *ngFor="let beverage of beverages" [value]="beverage.value">
+        {{ beverage.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Quantity">
+      <mat-option [value]=1>1</mat-option>
+      <mat-option [value]=2>2</mat-option>
+      <mat-option [value]=3>3</mat-option>
+      <mat-option [value]=4>4</mat-option>
+      <mat-option [value]=5>5</mat-option>
+    </mat-select>
+    </mat-form-field><button mat-raised-button color="primary" class="greenbtn" id="btnAdd">+</button>
+  <br>
+
+  <button id="btnSubmitOrder" (click)="onSubmitOrder()" mat-raised-button color="accent">Submit Order </button>
+</div>

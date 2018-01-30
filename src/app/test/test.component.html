@@ -1,0 +1,31 @@
+<mat-toolbar style="backgroung:rgb(2, 2, 78)" color="primary">
+    <mat-toolbar-row>
+      <span>Global Blue Cafe</span>
+    </mat-toolbar-row></mat-toolbar>
+
+<mat-tab-group>
+  <mat-tab label="Home">
+    <ng-template mat-tab-label>
+      <mat-icon>home</mat-icon>&nbsp;Home
+    </ng-template>
+    <div id="home">
+      <br> Welcome !
+    </div>
+  </mat-tab>
+  <mat-tab label="Barista">
+      <ng-template mat-tab-label>
+          <mat-icon>cake</mat-icon>&nbsp;Barista
+        </ng-template>
+    <div id="barista">
+      <br><app-cafe-order></app-cafe-order>
+    </div>
+  </mat-tab>
+  <mat-tab label="Order Status">
+      <ng-template mat-tab-label><mat-icon>shopping_car</mat-icon>&nbsp;Order Status</ng-template>
+      
+    <div>
+      <br>
+      Order Status
+    </div>
+  </mat-tab>
+</mat-tab-group>
