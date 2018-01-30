@@ -1,11 +1,12 @@
-// export class Order {
-     
-//     constructor(
-//      orderDate: string,
-//      orderDetails: OrderDetails[]
-//     ) { }
+export class Order {  [x: string]: OrderDetails[];
 
-// }
+     
+    constructor(
+     orderDate: any,
+     orderDetails: any[]
+    ) { }
+
+}
 
 export class OrderDetails {
    
