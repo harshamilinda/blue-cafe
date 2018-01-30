@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Order, OrderDetails } from '../model/cafe-model';
 @Component({
   selector: 'app-cafe-order',
   templateUrl: './cafe-order.component.html',
@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class CafeOrderComponent implements OnInit {
 
   show: boolean =false;
+  orderDetails: OrderDetails[]= [];
   beverages = [
     { value: 'Coffee', viewValue: 'Coffee' },
     { value: 'Expresso', viewValue: 'Expresso' },
@@ -24,5 +25,9 @@ export class CafeOrderComponent implements OnInit {
   onNewOrder(){
     this.show=true;
   }
+  addOrderDetails(beverage, quentity){
+    this.orderDetails.push(beverage, quentity);
+  }
+  
   
 }

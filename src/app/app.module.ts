@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule,  ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 import { MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 
@@ -14,6 +15,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CafeOrderComponent } from './cafe-order/cafe-order.component';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSelectModule } from '@angular/material/select';
+import { CafeOrderNotificationComponent } from './cafe-order-notification/cafe-order-notification.component';
+import { importExpr } from '@angular/compiler/src/output/output_ast';
 
 
 
@@ -23,7 +26,8 @@ import { MatSelectModule } from '@angular/material/select';
     AppComponent,
     CafeDashboardComponent,
     TestComponent,
-    CafeOrderComponent
+    CafeOrderComponent,
+    CafeOrderNotificationComponent
     
   ],
   imports: [

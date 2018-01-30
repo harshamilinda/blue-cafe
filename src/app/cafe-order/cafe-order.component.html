@@ -18,7 +18,9 @@
       <mat-option [value]=4>4</mat-option>
       <mat-option [value]=5>5</mat-option>
     </mat-select>
-    </mat-form-field><button mat-raised-button color="primary" class="greenbtn" id="btnAdd">+</button>
+    </mat-form-field><button mat-raised-button color="primary" (click)="addOrderDetails()" class="greenbtn" id="btnAdd">&nbsp;Add</button>
+    <hr>
+    <ul><li *ngFor="let orderDetail of orderDetails">{{orderDetail.beverage}}&nbsp; X &nbsp; {{quentity}}</li></ul>
   <br>
 
   <button id="btnSubmitOrder" (click)="onSubmitOrder()" mat-raised-button color="accent">Submit Order </button>
