@@ -16,7 +16,7 @@
   
   .cafe-blue li:hover {
     color: #607D8B;
-    background-color: #DDD;
+    background-color: rgb(234, 241, 250);
     left: .1em;
   }
   
@@ -28,6 +28,16 @@
     width: 250px;
   }
   
+  .cafe-alert {
+    border-left: 10px solid #1976d2;
+    background-color: rgba(0, 23, 255, 0.05);
+    padding: 16px;
+    margin: 24px 0;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+}
   .cafe-blue a:hover {
     color:#607D8B;
   }
@@ -37,7 +47,7 @@
     font-size: small;
     color: white;
     padding: 0.8em 0.7em 0 0.7em;
-    background-color: rgba(12, 72, 128, 0.89);
+    background-color: rgba(88, 138, 185, 0.89);
     line-height: 1em;
     position: relative;
     left: -1px;

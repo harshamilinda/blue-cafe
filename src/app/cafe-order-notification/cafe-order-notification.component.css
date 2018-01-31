@@ -1,0 +1,10 @@
+.cafe-alert {
+    border-left: 10px solid #90b8ff;
+    background-color:rgba(162, 163, 175, 0.05);
+    padding: 16px;
+    margin: 24px 0;
+    font-size: 14px;
+    color: #333;
+    width: 100%;
+    box-sizing: border-box;
+}
