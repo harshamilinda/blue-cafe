@@ -13,7 +13,7 @@ export class CafeOrderComponent implements OnInit {
 
   show: boolean = false;
   public orderDetails: Array<OrderDetails> = [];
-  public order: Order;
+  //public order: Order;
   sBeverage: string;
   errorMessage: string;
   beverages = [
@@ -21,31 +21,43 @@ export class CafeOrderComponent implements OnInit {
     { value: 'Expresso', viewValue: 'Expresso' },
     { value: 'Late', viewValue: 'Late' }
   ];
-  constructor(private _formBuilder: FormBuilder, private _cafeApiService: CafeApiService ) { }
+  constructor(private _formBuilder: FormBuilder, private _cafeApiService: CafeApiService) { }
 
   ngOnInit() {
-    
+
   }
   onSubmitOrder() {
     this.show = false;
     // this.order.orderDetails = this.orderDetails;
     //this.order.orderDate = Date.now.toString;
-    let myB = new Beverage("Tea2","5");
-    
+    let myB = new Beverage("Tea2", "5");
+
 
     //var param = JSON.stringify(myB);
     this._cafeApiService
-        .addBeverage(myB)
-      
-        .subscribe(
-            result => console.log(result),
-            error => this.errorMessage = <any>error
-        ); 
+      .addBeverage(myB)
+
+      .subscribe(
+      result => console.log(result),
+      error => this.errorMessage = <any>error
+      );
+
+    //place an order
+    let orderDate = new Date().toLocaleDateString();
+    let order = new Order(orderDate, this.orderDetails)
+    this._cafeApiService
+      .placeOrder(order)
+      .subscribe(
+        result => console.log(result),
+        error => this.errorMessage = <any>error
+      );
+
+
   }
   onNewOrder() {
     this.show = true;
   }
-  
+
   sQty: number;
 
   quantities = [
@@ -57,12 +69,12 @@ export class CafeOrderComponent implements OnInit {
   ]
 
   addOrderDetails(_beverage: string, _quentity: number): void {
-   let detail = new OrderDetails(_beverage, _quentity);
+    let detail = new OrderDetails(_beverage, _quentity);
     // this.orderDetails.push({'beverage': _beverage, 'quantity': _quentity});
-     this.orderDetails.push(detail);
-    //alert(this.orderDetails.entries.length);
+    this.orderDetails.push(detail);
+
 
   }
-  
+
 
 }
