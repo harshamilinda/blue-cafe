@@ -11,7 +11,8 @@ export class CafeDashboardComponent implements OnInit {
 
   constructor(private _cafeApiService: CafeApiService) { }
 
-  orders: Order[];
+  //orders: Order[];
+  public orders: Array<Order> = [];
   errMessage: string;
   ngOnInit() {
     this.onLoadOrders();
@@ -21,8 +22,9 @@ export class CafeDashboardComponent implements OnInit {
     this._cafeApiService
     .getOrder()
     .subscribe(
-      items => this.orders = items,
-      error => this.errMessage = <any>error
+      (orders)=> {
+        this.orders = orders;
+      }
     );
   }
   onOrderReady(){

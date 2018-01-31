@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Order, OrderDetails, Beverage } from '../model/cafe-model';
+import { Order, OrderDetails, Beverage, OrderStatus } from '../model/cafe-model';
 import { CafeApiService } from '../services/cafe-api.service';
-import { CafeDashboardComponent } from '../cafe-dashboard/cafe-dashboard.component';
+//import { CafeDashboardComponent } from '../cafe-dashboard/cafe-dashboard.component';
 
 @Component({
   selector: 'app-cafe-order',
@@ -29,7 +29,7 @@ export class CafeOrderComponent implements OnInit {
 
     //place an order
     let orderDate = new Date().toLocaleDateString();
-    let order = new Order(orderDate, this.orderDetails)
+    let order = new Order(OrderStatus.Preparing, orderDate, this.orderDetails)
     this._cafeApiService
       .placeOrder(order)
       .subscribe(

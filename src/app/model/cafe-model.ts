@@ -1,7 +1,10 @@
-export class Order {  [x: string]: OrderDetails[];
-
-     
+export class Order {  
+    
+    
+    //[x: string]: OrderDetails[];
+         
     constructor(
+     public Status: any,
      public orderDate: any,
      public orderDetails: any[]
     ) { }
@@ -30,4 +33,11 @@ export class OrderDetails {
     Order  = "http://localhost:53831/api/order",
     Beverage = "http://localhost:53831/api/beverage"
     
+}
+
+export enum OrderStatus {
+    Preparing = "Preparing",
+    Serving = "Serving",
+    Completed = "Completed",
+    Cancelled = "Cancelled",
 }

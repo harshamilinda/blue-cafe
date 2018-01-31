@@ -1,11 +1,9 @@
 <h2>Order List</h2>
 
-<ul class="heroes">
+<ul class="cafe-blue">
   <li *ngFor="let order of orders">
     <a routerLink="#">
-      <span class="badge">{{order.id}}</span> {{order.status}}
-    </a>
-    <button class="delete" title="delete hero"
-    (click)="onOrderReady(order)">Order Ready</button>
+      <span class="badge">SG-00{{order.Id}}</span> {{order.status ? 0 : "Pending" }}
+  </a>
   </li>
 </ul>
