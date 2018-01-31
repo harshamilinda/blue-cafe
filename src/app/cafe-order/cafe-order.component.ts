@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Order, OrderDetails } from '../model/cafe-model';
+import { Order, OrderDetails, Beverage } from '../model/cafe-model';
 import { CafeApiService } from '../services/cafe-api.service';
 
 @Component({
@@ -30,13 +30,13 @@ export class CafeOrderComponent implements OnInit {
     this.show = false;
     // this.order.orderDetails = this.orderDetails;
     //this.order.orderDate = Date.now.toString;
+    let myB = new Beverage("Tea2","5");
+    
 
+    //var param = JSON.stringify(myB);
     this._cafeApiService
-        //.createService('api/Movie/TestPost', {'name': 'milinda'})
-        .createService('http://localhost:53831/api/beverage',{
-          "Name": "White Coffe",
-          "UnitPrice": 2
-      })
+        .addBeverage(myB)
+      
         .subscribe(
             result => console.log(result),
             error => this.errorMessage = <any>error

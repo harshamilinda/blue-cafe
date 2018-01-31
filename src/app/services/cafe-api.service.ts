@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { Order, OrderDetails, Beverage, CafeURLs } from '../model/cafe-model';
 import { Observable } from 'rxjs/Observable';
 
 // Observable class extensions
@@ -18,28 +19,45 @@ import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class CafeApiService {
-  headers: Headers;
-  options: RequestOptions;
+    headers: Headers;
+    options: RequestOptions;
 
-  constructor(private http: Http) {
-    this.headers = new Headers({
-      'Content-Type': 'application/json',
-      'Accept': 'q=0.8;application/json;q=0.9',
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-      'Access-Control-Allow-Origin': '*'
-    });
-    this.options = new RequestOptions({ headers: this.headers });
+    constructor(private http: Http) {
+        this.headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'q=0.8;application/json;q=0.9',
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+            'Access-Control-Allow-Origin': '*'
+        });
+        this.options = new RequestOptions({ headers: this.headers });
 
-  }
+    }
 
-  createService(url: string, param: any): Observable<any> {
-    let body = JSON.stringify(param);
-    return this.http
-        .post(url, body, this.options)
-        .map(this.extractData)
-        .catch(this.handleError);
-    }   
+    createService(url: string, param: any): Observable<any> {
+        let body = JSON.stringify(param);
+        return this.http
+            .post(url, body, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+    placeOrder(param: any): Observable<any> {
+        let body = JSON.stringify(param);
+        let url = CafeURLs.Order.toString();
+        return this.http
+            .post(url, body, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+    addBeverage(param: any): Observable<any> {
+        let body = JSON.stringify(param);
+        let url = CafeURLs.Beverage.toString();
+        return this.http
+            .post(url, body, this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
+
 
     private extractData(res: Response) {
         let body = res.json();
@@ -52,6 +70,6 @@ export class CafeApiService {
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
-    
+
 
 }
