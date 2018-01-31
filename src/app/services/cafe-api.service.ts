@@ -24,7 +24,10 @@ export class CafeApiService {
   constructor(private http: Http) {
     this.headers = new Headers({
       'Content-Type': 'application/json',
-      'Accept': 'q=0.8;application/json;q=0.9'
+      'Accept': 'q=0.8;application/json;q=0.9',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Origin': '*'
     });
     this.options = new RequestOptions({ headers: this.headers });
 

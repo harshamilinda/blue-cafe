@@ -32,7 +32,11 @@ export class CafeOrderComponent implements OnInit {
     //this.order.orderDate = Date.now.toString;
 
     this._cafeApiService
-        .createService('api/Movie/TestPost', {'name': 'kosala'})
+        //.createService('api/Movie/TestPost', {'name': 'milinda'})
+        .createService('http://localhost:53831/api/beverage',{
+          "Name": "White Coffe",
+          "UnitPrice": 2
+      })
         .subscribe(
             result => console.log(result),
             error => this.errorMessage = <any>error
@@ -41,14 +45,7 @@ export class CafeOrderComponent implements OnInit {
   onNewOrder() {
     this.show = true;
   }
-  selectedValue: string;
-
-  foods = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' }
-  ];
-
+  
   sQty: number;
 
   quantities = [
