@@ -5,13 +5,14 @@
     </div>
     <button mat-raised-button color="primary" (click)="onNewOrder()">New Order</button>
     <br>
+    <app-cafe-dashboard></app-cafe-dashboard>
   </div>
   <div *ngIf="show">
     <div class="cafe-alert">
       <mat-form-field>
         <mat-select placeholder="Select Beverage" [(ngModel)]="sBeverage" name="beverage">
           <mat-option *ngFor="let beverage of beverages" [value]="beverage.Name">
-            {{ beverage.Name  }}
+            {{ beverage.Name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -24,13 +25,13 @@
         </mat-select>
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="addOrderDetails(sBeverage,sQty)" id="btnAdd">Add</button>
-    
-    <ul class="items">
-      <li *ngFor="let orderDetail of orderDetails">
-        <span class="badge">{{ orderDetail.quantity }}</span>{{ orderDetail.beverage }}
-      </li>
-    </ul>
-  </div>
+
+      <ul class="items">
+        <li *ngFor="let orderDetail of orderDetails">
+          <span class="badge">{{ orderDetail.quantity }}</span>{{ orderDetail.beverage }}
+        </li>
+      </ul>
+    </div>
     <br>
     <button mat-raised-button color="primary" id="btnSubmitOrder" (click)="onSubmitOrder()">
       Submit Order

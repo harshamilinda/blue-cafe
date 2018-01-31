@@ -49,6 +49,13 @@ export class CafeApiService {
             .map(this.extractData)
             .catch(this.handleError);
     }
+    getOrder(): Observable<any> {
+        let url = CafeURLs.Order.toString();
+        return this.http
+            .get(url,this.options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    }
     addBeverage(param: any): Observable<any> {
         let body = JSON.stringify(param);
         let url = CafeURLs.Beverage.toString();

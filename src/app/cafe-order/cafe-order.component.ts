@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Order, OrderDetails, Beverage } from '../model/cafe-model';
 import { CafeApiService } from '../services/cafe-api.service';
+import { CafeDashboardComponent } from '../cafe-dashboard/cafe-dashboard.component';
 
 @Component({
   selector: 'app-cafe-order',
@@ -17,11 +18,7 @@ export class CafeOrderComponent implements OnInit {
   sBeverage: string;
   errorMessage: string;
   beverages: Beverage[];
-  // beverages = [
-  //   { value: 'Coffee', viewValue: 'Coffee' },
-  //   { value: 'Expresso', viewValue: 'Expresso' },
-  //   { value: 'Late', viewValue: 'Late' }
-  // ];
+
   constructor(private _formBuilder: FormBuilder, private _cafeApiService: CafeApiService) { }
 
   ngOnInit() {

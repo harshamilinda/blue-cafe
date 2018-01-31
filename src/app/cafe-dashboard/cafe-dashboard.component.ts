@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Order, OrderDetails, Beverage } from '../model/cafe-model';
+import { CafeApiService } from '../services/cafe-api.service';
 
 @Component({
   selector: 'app-cafe-dashboard',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CafeDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _cafeApiService: CafeApiService) { }
 
+  orders: Order[];
+  errMessage: string;
   ngOnInit() {
+    this.onLoadOrders();
+  }
+
+  onLoadOrders() : void{
+    this._cafeApiService
+    .getOrder()
+    .subscribe(
+      items => this.orders = items,
+      error => this.errMessage = <any>error
+    );
+  }
+  onOrderReady(){
+
   }
 
 }

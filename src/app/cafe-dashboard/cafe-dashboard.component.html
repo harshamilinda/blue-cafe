@@ -1,3 +1,11 @@
-<p>
-  cafe-dashboard works!
-</p>
+<h2>Order List</h2>
+
+<ul class="heroes">
+  <li *ngFor="let order of orders">
+    <a routerLink="#">
+      <span class="badge">{{order.id}}</span> {{order.status}}
+    </a>
+    <button class="delete" title="delete hero"
+    (click)="onOrderReady(order)">Order Ready</button>
+  </li>
+</ul>
