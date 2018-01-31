@@ -12,14 +12,16 @@ export class OrderDetails {
    
     constructor(
        public beverage: any,
-       public quantity: any
+       public quantity: any,
+       public beverageId: any
     ) { }
  }
 
  export class Beverage{
      constructor(
          public Name: any,
-         public UnitPrice: any
+         public UnitPrice: any,
+         public BeverageId: any
      ){}
  }
 

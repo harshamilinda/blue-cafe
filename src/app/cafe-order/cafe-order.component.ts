@@ -16,31 +16,19 @@ export class CafeOrderComponent implements OnInit {
   //public order: Order;
   sBeverage: string;
   errorMessage: string;
-  beverages = [
-    { value: 'Coffee', viewValue: 'Coffee' },
-    { value: 'Expresso', viewValue: 'Expresso' },
-    { value: 'Late', viewValue: 'Late' }
-  ];
+  beverages: Beverage[];
+  // beverages = [
+  //   { value: 'Coffee', viewValue: 'Coffee' },
+  //   { value: 'Expresso', viewValue: 'Expresso' },
+  //   { value: 'Late', viewValue: 'Late' }
+  // ];
   constructor(private _formBuilder: FormBuilder, private _cafeApiService: CafeApiService) { }
 
   ngOnInit() {
-
+    this.getBeverages();
   }
   onSubmitOrder() {
     this.show = false;
-    // this.order.orderDetails = this.orderDetails;
-    //this.order.orderDate = Date.now.toString;
-    let myB = new Beverage("Tea2", "5");
-
-
-    //var param = JSON.stringify(myB);
-    this._cafeApiService
-      .addBeverage(myB)
-
-      .subscribe(
-      result => console.log(result),
-      error => this.errorMessage = <any>error
-      );
 
     //place an order
     let orderDate = new Date().toLocaleDateString();
@@ -54,8 +42,17 @@ export class CafeOrderComponent implements OnInit {
 
 
   }
+  getBeverages() : void {
+    this._cafeApiService
+      .getBeverage()
+      .subscribe(
+        items => this.beverages = items,
+        error => this.errorMessage = <any>error
+      );
+  }
   onNewOrder() {
     this.show = true;
+    this.orderDetails = [];
   }
 
   sQty: number;
@@ -69,7 +66,8 @@ export class CafeOrderComponent implements OnInit {
   ]
 
   addOrderDetails(_beverage: string, _quentity: number): void {
-    let detail = new OrderDetails(_beverage, _quentity);
+    let b = this.beverages.find(x => x.Name == _beverage);
+    let detail = new OrderDetails(b.Name, _quentity,b.BeverageId);
     // this.orderDetails.push({'beverage': _beverage, 'quantity': _quentity});
     this.orderDetails.push(detail);
 

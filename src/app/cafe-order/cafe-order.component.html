@@ -10,8 +10,8 @@
     <div class="cafe-alert">
       <mat-form-field>
         <mat-select placeholder="Select Beverage" [(ngModel)]="sBeverage" name="beverage">
-          <mat-option *ngFor="let beverage of beverages" [value]="beverage.value">
-            {{ beverage.value }}
+          <mat-option *ngFor="let beverage of beverages" [value]="beverage.Name">
+            {{ beverage.Name  }}
           </mat-option>
         </mat-select>
       </mat-form-field>
