@@ -9,7 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { CafeDashboardComponent } from './cafe-dashboard/cafe-dashboard.component';
-import { TestComponent } from './test/test.component';
+import { TestComponent } from './cafe-main/test.component';
 import { MatTabsModule} from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CafeOrderComponent } from './cafe-order/cafe-order.component';
