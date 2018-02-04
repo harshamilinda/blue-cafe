@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Order, OrderDetails, Beverage } from '../model/cafe-model';
 import { CafeApiService } from '../services/cafe-api.service';
 import { HubConnection } from '@aspnet/signalr-client';
+import { ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
 
 
 @Component({
@@ -27,6 +28,16 @@ export class CafeDashboardComponent implements OnInit {
     // this.hubConnection.on('sendToAll',()=>{
       
     // });
+
+
+    let connection = new HubConnection('http://localhost:53831/signalr/hubs');
+    connection.on('send', data =>{
+      console.log(data);
+    });
+    
+    // connection.start()
+    //   .then(()=>console.log("connected to cafeHub"));
+
 
   }
 
