@@ -3,6 +3,8 @@ import { Order, OrderDetails, Beverage } from '../model/cafe-model';
 import { CafeApiService } from '../services/cafe-api.service';
 import { HubConnection } from '@aspnet/signalr-client';
 import { ConnectedOverlayPositionChange } from '@angular/cdk/overlay';
+import { CONFIGURATION } from '../app.module';
+import { hubConnection } from 'signalr-no-jquery';
 
 
 @Component({
@@ -19,27 +21,32 @@ export class CafeDashboardComponent implements OnInit {
   public orders: Array<Order> = [];
   errMessage: string;
   ngOnInit() {
+
     this.onLoadOrders();
-    // this.hubConnection = new HubConnection('http://localhost:53831/signalr/hubs');
-    // this.hubConnection
-    //   .start()
-    //   .then(() => console.log('SignalR Cafe Hub Connection started!'))
-    //   .catch(err => console.log('Error while establishing connection :('));
-    // this.hubConnection.on('sendToAll',()=>{
-      
-    // });
-
-
-    let connection = new HubConnection('http://localhost:53831/signalr/hubs');
-    connection.on('send', data =>{
-      console.log(data);
-    });
-    
-    // connection.start()
-    //   .then(()=>console.log("connected to cafeHub"));
-
-
+    this.onNotification();
+   
   }
+  
+  onNotification(): void{
+ 
+    let proxyName: string = 'cafeHub';
+
+    const connection = hubConnection(CONFIGURATION.baseUrls.server);
+    const hubProxy = connection.createHubProxy(proxyName);
+     
+    // set up event listeners i.e. for incoming "message" event
+    hubProxy.on('sendToAll', function() {
+      console.log('Calling ... onLoadOrders');
+      this.onLoadOrders();
+    });
+     
+    // connect
+    connection.start(this.onLoadOrders())
+    .done(function(){ console.log('Now connected, connection ID=' + connection.id); })
+    .fail(function(){ console.log('Could not connect'); });
+   
+  }
+ 
 
   onLoadOrders() : void{
     this._cafeApiService

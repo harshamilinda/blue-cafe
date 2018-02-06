@@ -23,6 +23,11 @@ import { HttpModule } from '@angular/http';
 
 
 
+export let CONFIGURATION = {  
+  baseUrls: {  
+      server: 'http://localhost:53831/signalr/hubs'  
+  },  
+}
 
 @NgModule({
   declarations: [
